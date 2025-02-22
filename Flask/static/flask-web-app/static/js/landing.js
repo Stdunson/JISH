@@ -1,10 +1,10 @@
 function showSignInForm() {
-    // Hide the logo container
+    // Hide logo container
     document.getElementById('logoContainer').style.display = 'none';
 
-    // Create the sign-in form
+    // Create sign-in form
     const signInForm = `
-        <form id="signInForm" action="/submit" method="post">
+        <form id="signInForm" action="/signin" method="post">
             <input type="text" id="username" name="username" placeholder="Username" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <div class="button-container">
@@ -14,21 +14,13 @@ function showSignInForm() {
         </form>
     `;
 
-    // Insert the sign-in form into the container
     document.getElementById('signInFormContainer').innerHTML = signInForm;
     document.getElementById('signInFormContainer').style.display = 'block';
-
-    // Hide the sign-in button
     document.getElementById('buttonContainer').style.display = 'none';
 }
 
 function hideSignInForm() {
-    // Show the logo container
     document.getElementById('logoContainer').style.display = 'block';
-
-    // Hide the sign-in form container
     document.getElementById('signInFormContainer').style.display = 'none';
-
-    // Show the sign-in button
     document.getElementById('buttonContainer').style.display = 'block';
 }
