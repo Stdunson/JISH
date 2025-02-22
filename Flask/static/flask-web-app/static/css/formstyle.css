@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-size: 18px; /* Increase base font size */
 }
 
 header {
@@ -60,24 +61,38 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    font-size: 1.2em; /* Increase label font size */
 }
 
 input[type="number"], input[type="checkbox"] {
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px; /* Increase padding */
     border: 1px solid #ddd;
     border-radius: 4px;
-    width: calc(100% - 22px); /* Adjust for padding and border */
+    width: calc(100% - 32px); /* Adjust for increased padding and border */
+    font-size: 1.2em; /* Increase input font size */
+}
+
+input[type="checkbox"] {
+    width: 30px; /* Increase width */
+    height: 30px; /* Increase height */
+    margin-bottom: 20px;
+    padding: 15px; /* Increase padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.2em; /* Increase input font size */
 }
 
 button {
     background-color: #191970; /* Midnight blue background */
     color: #FAF0E6; /* Linen text */
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Increase padding */
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s;
+    font-size: 1.2em; /* Increase button font size */
+    margin: 5px; /* Add margin to space out buttons */
 }
 
 button:hover {
