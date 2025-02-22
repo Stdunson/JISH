@@ -175,6 +175,3 @@ async function sendData() {
         console.error('Error:', error);
     }
 }
-
-//recieving data
-const outputValues = [];

@@ -1,9 +1,12 @@
+let percentages; let income;
+    
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('pieChart').getContext('2d');
     const data = {
         labels: ['Food', 'Utility', 'Housing', 'Savings', 'Insurance', 'Transportation'],
         datasets: [{
             data: [20, 15, 25, 10, 20, 10], // Example percentages
+            total: 900, // Example total
             backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
         }]
     };
@@ -45,10 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Populate the list of numbers under the pie chart
     const numberList = document.getElementById('numberList');
-    const numbers = [100, 200, 300, 400, 500, 600]; // Example numbers
-    for (let n = 0; n < numbers.length; n++) {
+    for (let n = 0; n < data.datasets[0].data.length; n++) {
         const li = document.createElement('li');
-        li.textContent = data.labels[n] + ": $" + numbers[n];
+        li.textContent = data.labels[n] + ": $" + (data.datasets[0].total * (data.datasets[0].data[n] / 100));
         numberList.appendChild(li);
     }
     numbers.forEach(number => {
