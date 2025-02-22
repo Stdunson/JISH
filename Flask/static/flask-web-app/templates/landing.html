@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="./css/landing.css">
-    <script src="./js/landing.js" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landingstyle.css') }}"">
+    <script src="{{ url_for('static', filename='js/landingscript.js') }}" defer></script>
 </head>
 <body>
     <header>
@@ -13,7 +13,7 @@
     </header>
     <main>
         <div class="logo-container" id="logoContainer">
-            <img src="./Images/logo-png.png" alt="Logo" class="logo">
+            <img src="{{ url_for('static', filename='png/logo-png.png') }}g" alt="Logo" class="logo">
         </div>
         <div class="button-container" id="buttonContainer">
             <button onclick="showSignInForm()">Sign In</button>
