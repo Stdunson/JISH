@@ -1,13 +1,14 @@
-let percentages; let income;
+let percentages = []; 
+let income;
     
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('pieChart').getContext('2d');
     const data = {
-        labels: ['Food', 'Utility', 'Housing', 'Savings', 'Insurance', 'Transportation'],
+        labels: ['Food', 'Utility', 'Housing', 'Savings', 'Insurance', 'Transportation', 'Disposable'],
         datasets: [{
-            data: [20, 15, 25, 10, 20, 10], // Example percentages
+            data: [20, 15, 20, 10, 15, 10, 10], // Example percentages
             total: 900, // Example total
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
+            backgroundColor: ['#1E3A8A', '#60A5FA', '#274BDB', '#93C5FD', '#3B82F6', '#AFCBFF', '#5A9BD5'] // Original order of shades
         }]
     };
 

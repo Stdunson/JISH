@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FAF0E6; /* Linen background */
+    color: #191970; /* Midnight blue text */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #191970; /* Midnight blue background */
+    color: #FAF0E6; /* Linen text */
+    border-bottom: 1px solid #ddd;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+}
+
+section {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#numberList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#numberList li {
+    margin-bottom: 10px;
+}
+
+.form-step {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="number"], input[type="checkbox"] {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 22px); /* Adjust for padding and border */
+}
+
+button {
+    background-color: #191970; /* Midnight blue background */
+    color: #FAF0E6; /* Linen text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #274BDB; /* Slightly lighter blue */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #191970; /* Midnight blue background */
+    color: #FAF0E6; /* Linen text */
+    border-top: 1px solid #ddd;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .form-step {
+        width: 100%;
+        max-width: 100%;
+    }
+}

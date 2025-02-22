@@ -11,7 +11,7 @@
         <h1>Budgeting Tool</h1>
     </header>
     <main>
-        <form id="userForm" onsubmit="handleSubmit(event)">
+        <form id="userForm" action="/submit" method="POST">
             <div class="form-step" id="step1">
                 <label for="monthlyIncome">Monthly Income:</label>
                 <input type="number" id="monthlyIncome" name="monthlyIncome" required>
