@@ -1,19 +1,35 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for
 from scripts.process_data import process_input
 
 main = Blueprint('main', __name__)
 
+# Landing Page Route (Starting Page)
 @main.route('/', methods=['GET'])
 def index():
-    return render_template('form.html')  # Render the form when the user visits the site
+    return render_template('landing.html')  # Show landing page first
 
+# Sign-in Route (Redirects to Form Page)
+@main.route('/signin', methods=['POST'])
+def signin():
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    # TODO: Add authentication logic if needed
+
+    return redirect(url_for('main.form_page'))  # Redirect to form page
+
+# Form Page Route
+@main.route('/form', methods=['GET'])
+def form_page():
+    return render_template('form.html')  # Render the form page
+
+# Submit Route (Processes User Input)
 @main.route('/submit', methods=['POST'])
 def submit():
-    # Collect all form inputs
     user_data = {
         "monthlyIncome": request.form.get("monthlyIncome"),
         "creditScore": request.form.get("creditScore"),
-        "hasDebt": request.form.get("hasDebt") == "on",  # Checkbox returns "on" if checked
+        "hasDebt": request.form.get("hasDebt") == "on",
         "debtSpending": request.form.get("debtSpending"),
         "hasMedicalExpenses": request.form.get("hasMedicalExpenses") == "on",
         "foodSpending": request.form.get("foodSpending"),
@@ -24,14 +40,11 @@ def submit():
         "transportationSpending": request.form.get("transportationSpending"),
     }
 
-    # Process the data using your Python function
     pieChartValues = process_input(user_data)
-
-    # Redirect to the dashboard with the processed result as query parameters
     return redirect(url_for('main.dashboard', **pieChartValues))
 
+# Dashboard Route
 @main.route('/dashboard')
 def dashboard():
-    # Extract the processed data from query parameters
     result = request.args.to_dict()
     return render_template('dashboard.html', data=result)
