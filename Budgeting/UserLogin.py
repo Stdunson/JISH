@@ -80,6 +80,7 @@ def welcomeback(username):
 # cleartable is for debugging purposes only
 def cleartable():
     cur.execute('DELETE FROM userlogin')
+    cur.execute('DELETE FROM userprofile')
     con.commit()
     print("Table cleared.")
 
@@ -108,10 +109,12 @@ elif choice == '2':
         welcomeback(username)
     else:
         print("Invalid username or password. Please try again.")
-        
+else:
+    print("Invalid choice. Please enter '1' or '2'.")
+"""    
 elif choice == '3':
     print("Clearing the database...")
     cleartable()
-        
-else:
-    print("Invalid choice. Please enter '1', '2', or '3'.")
+"""
+
+
