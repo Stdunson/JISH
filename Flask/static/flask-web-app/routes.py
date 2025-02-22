@@ -25,13 +25,13 @@ def submit():
     }
 
     # Process the data using your Python function
-    print(user_data)
+    pieChartValues = process_input(user_data)
 
-    # Redirect to the dashboard with the processed result
-    #return redirect(url_for('main.dashboard', result=result))
-    return redirect("/dashboard")
+    # Redirect to the dashboard with the processed result as query parameters
+    return redirect(url_for('main.dashboard', **pieChartValues))
 
 @main.route('/dashboard')
 def dashboard():
-    result = request.args.get("result", "No data processed")  # Get the result from URL query params
-    return render_template('dashboard.html', result=result)
+    # Extract the processed data from query parameters
+    result = request.args.to_dict()
+    return render_template('dashboard.html', data=result)
