@@ -160,9 +160,21 @@ function handleSubmit(event){
     }
 }
 
-//sending data
+//sending data to flask
 async function sendData() {
-    let input = inputValues;
+    try {
+        const response = await fetch('http://localhost:5000/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(input)
+        });
+        const data = await response.json();
+        console.log('Success:', data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
 //recieving data
