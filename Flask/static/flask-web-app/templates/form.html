@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Basic HTML Project</title>
-    <link rel="stylesheet" href="./css/formstyle.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formstyle.css') }}">
 </head>
 <body>
     <header>
@@ -103,6 +103,6 @@
     <footer>
         <p>&copy; 2025 team JISH</p>
     </footer>
-    <script src="./js/formscript.js"></script>
+    <script src="{{ url_for('static', filename='js/formscript.js') }}"></script>
 </body>
 </html>

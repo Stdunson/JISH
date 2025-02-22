@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./css/dashboardstyle.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardstyle.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -26,12 +26,15 @@
             </div>
             <ul id="numberList">
                 <!-- Numbers will be populated by JavaScript -->
+                {% for key, value in data.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
             </ul>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 team JISH</p>
     </footer>
-    <script src="./js/dashboardscript.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboardscript.js') }}"></script>
 </body>
 </html>
