@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart {
+    width: 50%;
+}
+
+.chart-values {
+    width: 50%;
+    margin-left: 20px;
+}
+
+#pieChartValues {
+    list-style-type: none;
+    padding: 0;
+}
+
+#numberList {
+    list-style-type: none;
+    padding: 0;
+}
