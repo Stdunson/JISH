@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic HTML Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formstyle.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Budgeting Tool</h1>
+    </header>
+    <main>
+        <form id="userForm" action="/submit" method="POST">
+            <div class="form-step" id="step1">
+                <label for="monthlyIncome">Monthly Income:</label>
+                <input type="number" id="monthlyIncome" name="monthlyIncome" required>
+                <br>
+                <button type="button" onclick="nextStep(2)">Next</button>
+            </div>
+            <div class="form-step" id="step2" style="display:none;">
+                <label for="creditScore">Credit Score:</label>
+                <input type="number" id="creditScore" name="creditScore" required>
+                <br>
+                <button type="button" onclick="prevStep(1)">Previous</button>
+                <button type="button" onclick="nextStep(3)">Next</button>
+            </div>
+            <div class="form-step" id="step3" style="display:none;">
+                <label for="hasDebt">Do you have any debt?</label>
+                <input type="checkbox" id="hasDebt" name="hasDebt" onclick="toggleDebtInput()">
+                <div id="debtInputContainer"></div>
+                <br>
+                <button type="button" onclick="prevStep(2)">Previous</button>
+                <button type="button" onclick="nextStep(4)">Next</button>
+            </div>
+            <div class="form-step" id="step4" style="display:none;">
+                <label for="hasMedicalExpenses">Do you have any medical expenses?</label>
+                <input type="checkbox" id="hasMedicalExpenses" name="hasMedicalExpenses" onclick="toggleMedicalExpensesInput()">
+                <div id="medicalExpensesInputContainer"></div>
+                <br>
+                <button type="button" onclick="prevStep(3)">Previous</button>
+                <button type="button" onclick="nextStep(5)">Next</button>
+            </div>
+            <div class="form-step" id="step5" style="display:none;">
+                <label for="hasChildren">Do you have any children?</label>
+                <input type="checkbox" id="hasChildren" name="hasChildren" onclick="toggleChildrenInput()">
+                <div id="childrenInputContainer"></div>
+                <br>
+                <button type="button" onclick="prevStep(4)">Previous</button>
+                <button type="button" onclick="nextStep(6)">Next</button>
+            </div>
+            <div class="form-step" id="step6" style="display:none;">
+                <label for="foodSpending">Food Spending:</label>
+                <input type="number" id="foodSpending" name="foodSpending" required>
+                <br>
+                <button type="button" onclick="prevStep(5)">Previous</button>
+                <button type="button" onclick="nextStep(7)">Next</button>
+            </div>
+            <div class="form-step" id="step7" style="display:none;">
+                <label for="utilitySpending">Utility Spending:</label>
+                <input type="number" id="utilitySpending" name="utilitySpending" required>
+                <br>
+                <button type="button" onclick="prevStep(6)">Previous</button>
+                <button type="button" onclick="nextStep(8)">Next</button>
+            </div>
+            <div class="form-step" id="step8" style="display:none;">
+                <label for="housingSpending">Housing Spending:</label>
+                <input type="number" id="housingSpending" name="housingSpending" required>
+                <br>
+                <button type="button" onclick="prevStep(7)">Previous</button>
+                <button type="button" onclick="nextStep(9)">Next</button>
+            </div>
+            <div class="form-step" id="step9" style="display:none;">
+                <label for="savingsSpending">Savings Spending:</label>
+                <input type="number" id="savingsSpending" name="savingsSpending" required>
+                <br>
+                <button type="button" onclick="prevStep(8)">Previous</button>
+                <button type="button" onclick="nextStep(10)">Next</button>
+            </div>
+            <div class="form-step" id="step10" style="display:none;">
+                <label for="insuranceSpending">Insurance Spending:</label>
+                <input type="number" id="insuranceSpending" name="insuranceSpending" required>
+                <br>
+                <button type="button" onclick="prevStep(9)">Previous</button>
+                <button type="button" onclick="nextStep(11)">Next</button>
+            </div>
+            <div class="form-step" id="step11" style="display:none;">
+                <label for="debtSpending">Debt Spending:</label>
+                <input type="number" id="debtSpending" name="debtSpending" required>
+                <br>
+                <button type="button" onclick="prevStep(10)">Previous</button>
+                <button type="button" onclick="nextStep(12)">Next</button>
+            </div>
+            <div class="form-step" id="step12" style="display:none;">
+                <label for="transportationSpending">Transportation Spending:</label>
+                <input type="number" id="transportationSpending" name="transportationSpending" required>
+                <br>
+                <button type="button" onclick="prevStep(11)">Previous</button>
+                <button type="submit" id="submitButton">Submit</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 team JISH</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/formscript.js') }}"></script>
+</body>
+</html>
