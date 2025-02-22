@@ -35,6 +35,69 @@ function toggleChildrenInput() {
     }
 }
 
+// Next Button
+function nextStep(step) {
+    const currentStepNumber = step - 1;
+    if (checkStepValid(currentStepNumber)) {
+        const currentStep = document.querySelector('.form-step:not([style*="display: none"])');
+        currentStep.style.display = 'none';
+        document.getElementById(`step${step}`).style.display = 'block';
+    } else {
+        alert('Incorrect Input');
+    }
+}
+
+// Prev Button
+function prevStep(step) {
+    const currentStep = document.querySelector('.form-step:not([style*="display: none"])');
+    currentStep.style.display = 'none';
+    document.getElementById(`step${step}`).style.display = 'block';
+}
+
+//checking each step
+function checkStepValid(step){
+    const moneySteps = [1, 6, 7, 8, 9, 10, 11, 12];
+    const boxSteps = [2, 3, 4];
+    const numSteps = [2, 5];
+
+    if(moneySteps.includes(step)){
+        console.log("Doing step # "+ step);
+        if(document.getElementById(`step${step}`).querySelector('input').value === ''){
+            return false;
+        }
+        if(document.getElementById(`step${step}`).querySelector('input').value < 0){
+            return false;
+        }
+    }
+
+    if(boxSteps.includes(step)){
+        console.log("Doing step # "+ step);
+        if(document.getElementById(`step${step}`).querySelector('input').checked){
+            if(document.getElementById(`step${step}`).querySelector('input').value === ''){
+                return false;
+            }
+            if(document.getElementById(`step${step}`).querySelector('input').value < 0){
+                return false;
+            }
+        }
+    }
+
+    if(numSteps.includes(step)){
+        console.log("Doing step # "+ step);
+        if(step === 2){
+            if(document.getElementById(`step${step}`).querySelector('input').value < 300 || document.getElementById(`step${step}`).querySelector('input').value > 850){
+                return false;
+            }
+        }else{
+            if(document.getElementById(`step${step}`).querySelector('input').value < 0){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 //collecting input values
 function collectInputValues() {
     const income = document.getElementById('monthlyIncome').value;
@@ -85,65 +148,6 @@ function collectInputValues() {
     };
 }
 
-function inputIsValid(){
-    const income = document.getElementById('monthlyIncome').value;
-    const creditScore = document.getElementById('creditScore').value;
-    const hasDebt = document.getElementById('hasDebt').checked;
-    let debtAmount;
-    const hasMedicalExpenses = document.getElementById('hasMedicalExpenses').checked;
-    let medicalExpensesAmount;
-    const hasChildren = document.getElementById('hasChildren').checked;
-    let numberOfChildren;
-    const foodSpending = document.getElementById('foodSpending').value;
-    const utilitySpending = document.getElementById('utilitySpending').value;
-    const housingSpending = document.getElementById('housingSpending').value;
-    const savingsSpending = document.getElementById('savingsSpending').value;
-    const insuranceSpending = document.getElementById('insuranceSpending').value;
-    const debtSpending = document.getElementById('debtSpending').value;
-    const transportationSpending = document.getElementById('transportationSpending').value;
-
-    if(!hasDebt) {
-        debtAmount = 0;
-    }else{
-        debtAmount = document.getElementById('debtAmount').value;
-    }
-    if(!hasMedicalExpenses) {
-        medicalExpensesAmount = 0;
-    }else{
-        medicalExpensesAmount = document.getElementById('medicalExpensesAmount').value;
-    }
-    if(!hasChildren) {
-        numberOfChildren = 0;
-    }else{
-        numberOfChildren = document.getElementById('numberOfChildren').value;
-    }
-
-    if(creditScore === '' || income === '' || debtAmount === '' || medicalExpensesAmount === '' || numberOfChildren === ''){
-        return false;
-    }
-    if(creditScore < 300 || creditScore > 850){
-        return false;
-    }
-    if(income < 0 || debtAmount < 0 || medicalExpensesAmount < 0 || numberOfChildren < 0){
-        return false;
-    }
-
-    if(foodSpending === '' || utilitySpending === '' || housingSpending === '' || savingsSpending === '' || insuranceSpending === '' || debtSpending === '' || transportationSpending === ''){
-        return false;
-    }
-    if(foodSpending < 0 || utilitySpending < 0 || housingSpending < 0 || savingsSpending < 0 || insuranceSpending < 0 || debtSpending < 0 || transportationSpending < 0){
-        return false;
-    }
-
-    if(foodSpending > income || utilitySpending > income || housingSpending > income || savingsSpending > income || insuranceSpending > income || debtSpending > income){
-        return false;
-    }
-
-
-    return true;
-
-}   
-
 //button submit
 const inputValues = [];
 const submitButton = document.getElementById('submitButton');
@@ -151,13 +155,8 @@ const submitButton = document.getElementById('submitButton');
 
 function handleSubmit(event){
     event.preventDefault();
-    if(inputIsValid()){
-        inputValues.push(collectInputValues());
-        alert(JSON.stringify(inputValues));
-    }else{
-        console.log('Invalid input');
-        alert('Invalid input');
-    }
+    inputValues.push(collectInputValues());
+    alert(JSON.stringify(inputValues));
 }
 
 //sending data to flask
@@ -168,7 +167,7 @@ async function sendData() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(input)
+            body: JSON.stringify(inputValues)
         });
         const data = await response.json();
         console.log('Success:', data);
